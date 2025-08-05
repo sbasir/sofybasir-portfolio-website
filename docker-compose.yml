@@ -1,0 +1,11 @@
+services:
+  hugo:
+    image: ghcr.io/gohugoio/hugo:v0.148.2
+    ports:
+      - "1313:1313"
+    volumes:
+      - ./site:/src
+    working_dir: /src
+    command: ["server", "--bind=0.0.0.0", "--port=1313", "--buildDrafts", "--buildFuture"]
+    environment:
+      - HUGO_ENVIRONMENT=development

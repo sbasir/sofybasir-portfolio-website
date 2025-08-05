@@ -1,0 +1,18 @@
+baseURL = 'https://sofybasir.me'
+languageCode = 'en-us'
+title = 'Sofy Basir - Technical Lead & AWS Infrastructure Architect'
+
+[params]
+  name = "Sofy Basir"
+  title = "Technical Lead & AWS Infrastructure Architect"
+  subtitle = "25+ years of progressive industry experience | AWS Pioneer since 2013"
+  description = "DevSecOps Professional & AWS Pioneer with 25+ years of progressive industry experience, recently serving as primary AWS Infrastructure Architect at Guzman y Gomez for 7+ years"
+  email = "sofy.basir@gmail.com"
+  phone = "+968 9901 6891"
+  location = "Muscat, Oman"
+  linkedin = "https://www.linkedin.com/in/sofybasir/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

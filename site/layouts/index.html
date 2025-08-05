@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    
+    <!-- Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        /* Ensure proper spacing and text flow */
+        strong {
+            display: inline !important;
+            font-weight: 700;
+        }
+        /* Ensure list items have proper text flow */
+        li {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="scroll-smooth bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="font-bold text-xl text-primary-600 dark:text-primary-400">
+                    {{ .Site.Params.name }}
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">About</a>
+                    <a href="#experience" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Experience</a>
+                    <a href="#skills" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Skills</a>
+                    <a href="#achievements" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Achievements</a>
+                    <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200">Contact</a>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <span class="dark:hidden">🌙</span>
+                    <span class="hidden dark:inline">☀️</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16 hero-gradient text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="mb-8">
+                    <div class="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-full mx-auto mb-6 flex items-center justify-center text-white text-4xl font-bold">
+                        SB
+                    </div>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    {{ .Site.Params.name }}
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-blue-100 mb-8">
+                    {{ .Site.Params.title }}
+                </h2>
+                <p class="text-xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                    {{ .Site.Params.subtitle }}. Primary AWS Infrastructure Architect at Guzman y Gomez with 3,500+ verified commits across 35 repositories.
+                </p>
+                
+                <!-- Key Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-yellow-300">25+</div>
+                        <div class="text-sm text-blue-100">Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-yellow-300">3,500+</div>
+                        <div class="text-sm text-blue-100">Verified Commits</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-yellow-300">2013</div>
+                        <div class="text-sm text-blue-100">AWS Pioneer</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-yellow-300">830K+</div>
+                        <div class="text-sm text-blue-100">Lines of Code</div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="flex flex-wrap justify-center gap-6 mb-12 text-blue-100">
+                    <div class="flex items-center">
+                        <i data-lucide="map-pin" class="w-5 h-5 mr-2"></i>
+                        {{ .Site.Params.location }}
+                    </div>
+                    <div class="flex items-center">
+                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                        {{ .Site.Params.email }}
+                    </div>
+                    <div class="flex items-center">
+                        <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                        {{ .Site.Params.phone }}
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold flex items-center justify-center transition-colors">
+                        <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                        Download Resume
+                    </a>
+                    <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3 rounded-lg font-semibold flex items-center justify-center transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5 mr-2"></i>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Professional Summary</h2>
+            <div class="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Technical Leadership</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            <strong>Technical Lead & AWS Infrastructure Architect</strong> with <strong>25+ years of progressive industry experience</strong> serving as Technical Lead and primary AWS Infrastructure Architect at Guzman y Gomez. <strong>AWS Pioneer (2013)</strong> with track record of first-to-market implementations including Australia's first Oracle ATG cloud migration.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            <strong>Dual-track leadership excellence</strong> managing <strong>2,267 project initiatives</strong> while delivering <strong>3,500+ commits</strong> across <strong>35 repositories</strong>. <strong>Strategic oversight</strong> combined with <strong>37.2% hands-on contribution</strong> to critical platform development.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Industry Expertise</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            <strong>Observability expert</strong> with enterprise implementations of DataDog, CloudWatch, SumoLogic, Splunk, and New Relic across regulated industries. Experienced in <strong>FDA-regulated medical device environments</strong> and <strong>telco audit requirements</strong> with international team leadership across multiple sectors.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Proven track record in <strong>zero-downtime enterprise migrations</strong> with <strong>99.9%+ uptime</strong> achievements across complex system transformations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Highlights -->
+    <section id="experience" class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Professional Experience</h2>
+            <div class="space-y-6">
+                
+                <!-- Current Role -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                    Technical Lead & Platform Engineer
+                                </h3>
+                                <div class="flex items-center text-primary-600 dark:text-primary-400 mb-2">
+                                    <i data-lucide="building" class="w-4 h-4 mr-2"></i>
+                                    Guzman y Gomez Australia
+                                </div>
+                                <div class="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                                    Feb 2018 – Present
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 italic">
+                                    Primary AWS Infrastructure Architect
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-6 pb-6">
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Key Achievements:</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span>Managed <strong>2,267 project initiatives</strong> as Technical Lead, maintaining <strong>37.2% hands-on contribution</strong>
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span>Led architecture across <strong>35 repositories</strong>, delivering <strong>3,500+ commits</strong> and <strong>830,000+ lines</strong> of code
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span>Architected core AWS infrastructure as primary contributor to gyg-ops repository (<strong>980 commits</strong>, 28% of total contributions)
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span>Implemented AWS serverless infrastructure leveraging <strong>Lambda (261 implementations)</strong> and <strong>WAF (216 configurations)</strong>
+                                </li>
+                            </ul>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Technologies:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">AWS CDK v2</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Lambda</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Aurora Serverless v2</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CloudFront</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">DataDog</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">TypeScript</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Node.js 22</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vodafone Role -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                    DevOps/AWS Architect and Lead Engineer
+                                </h3>
+                                <div class="flex items-center text-primary-600 dark:text-primary-400 mb-2">
+                                    <i data-lucide="building" class="w-4 h-4 mr-2"></i>
+                                    Vodafone Australia
+                                </div>
+                                <div class="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                                    Oct 2013 – Dec 2018
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 italic">
+                                    AWS Pioneer & Cloud Transformation Leader
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-6 pb-6">
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Revolutionary Achievements:</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>Australian-first Oracle ATG cloud migration</strong>: Led enterprise eCommerce platform transformation (2015)
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>Platform as a Service</strong>: Custom PaaS solution for enterprise requirements
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>Big Data Innovation</strong>: ODS (Online Data Store) using MapReduce and DynamoDB for daily customer data usage
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>CI/CD Pioneer</strong>: Implemented deployment pipelines before mainstream adoption
+                                </li>
+                            </ul>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Technologies:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">AWS (early adoption)</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Oracle ATG</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">WebLogic</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Chef</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Lambda</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">API Gateway</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ResMed Role -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                    International Technical Leadership
+                                </h3>
+                                <div class="flex items-center text-primary-600 dark:text-primary-400 mb-2">
+                                    <i data-lucide="building" class="w-4 h-4 mr-2"></i>
+                                    ResMed (Australia & USA)
+                                </div>
+                                <div class="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                                    May 2011 – Feb 2013
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 italic">
+                                    FDA-Regulated Environment Leadership
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-6 pb-6">
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Leadership Excellence:</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>Team Building</strong>: Built development team from scratch (15+ members)
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>International Management</strong>: Led 20-person development team in San Diego, USA
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>FDA Compliance</strong>: Medical device patient tracking application in regulated environment
+                                </li>
+                                <li class="text-gray-600 dark:text-gray-300">
+                                    <span class="text-primary-600 dark:text-primary-400 mr-2">•</span><strong>Agile Leadership</strong>: Scrum framework implementation in highly regulated medical environment
+                                </li>
+                            </ul>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Technologies:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Java</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Spring Framework</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">REST</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JMS</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Agile/Scrum</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">FDA compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies -->
+    <section id="skills" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Core Competencies</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Technical Leadership -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Technical Leadership</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <li>• Technical Strategy</li>
+                        <li>• Team Leadership</li>
+                        <li>• Platform Architecture</li>
+                        <li>• Infrastructure as Code</li>
+                        <li>• Multi-Account VPC</li>
+                    </ul>
+                </div>
+
+                <!-- Cloud Infrastructure -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="cloud" class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Cloud Infrastructure</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <li>• AWS CDK v2</li>
+                        <li>• Lambda & API Gateway</li>
+                        <li>• CloudFront & WAF</li>
+                        <li>• RDS Aurora</li>
+                        <li>• Terraform</li>
+                    </ul>
+                </div>
+
+                <!-- DevOps & Observability -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="monitor" class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">DevOps & Observability</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <li>• DataDog & CloudWatch</li>
+                        <li>• SumoLogic & Splunk</li>
+                        <li>• GitHub Actions</li>
+                        <li>• SLA/SLO Management</li>
+                        <li>• Incident Response</li>
+                    </ul>
+                </div>
+
+                <!-- Programming -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="code" class="w-6 h-6 text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Programming</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <li>• Node.js & TypeScript</li>
+                        <li>• Python & JavaScript</li>
+                        <li>• Microservices</li>
+                        <li>• API-First Design</li>
+                        <li>• Serverless Computing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Achievements -->
+    <section id="achievements" class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Key Achievements</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Australian First -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-start">
+                        <i data-lucide="award" class="w-8 h-8 text-yellow-500 mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                Australian First
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Oracle ATG eCommerce platform cloud migration at Vodafone (2015) - pioneering enterprise cloud transformation in Australia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Excellence -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-start">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-green-500 mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                3,500+ Commits & 830K+ Lines
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Demonstrating sustained technical excellence across 35 repositories with quantified contributions
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- International Leadership -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-start">
+                        <i data-lucide="users" class="w-8 h-8 text-purple-500 mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                International Leadership
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Managed 20-person development team across continents in FDA-regulated medical device environment at ResMed
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zero-Downtime Migrations -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-start">
+                        <i data-lucide="globe" class="w-8 h-8 text-blue-500 mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                Zero-Downtime Migrations
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300">
+                                Complex enterprise system transformations with 99.9%+ uptime across multiple industry sectors
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+            <div class="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-gray-600 dark:text-gray-300">{{ .Site.Params.email }}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-gray-600 dark:text-gray-300">{{ .Site.Params.phone }}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <span class="text-gray-600 dark:text-gray-300">{{ .Site.Params.location }}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="linkedin" class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-3"></i>
+                                <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-primary-600 dark:text-primary-400 hover:underline">
+                                    linkedin.com/in/sofybasir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Download Resume</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">
+                            Get the complete technical resume with quantified achievements and detailed project history.
+                        </p>
+                        <button class="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-semibold transition-colors flex items-center justify-center">
+                            <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                            Download Complete Resume
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">
+                © 2025 {{ .Site.Params.name }}. DevSecOps Professional & AWS Infrastructure Architect.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'font-semibold');
+                link.classList.add('text-gray-600', 'dark:text-gray-300');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-600', 'dark:text-gray-300');
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'font-semibold');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
