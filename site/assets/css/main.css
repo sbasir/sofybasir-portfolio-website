@@ -9,6 +9,9 @@
   --color-primary-700: #1d4ed8;
 }
 
+/* Force class-based dark mode only (disable media query) */
+@variant dark (.dark &);
+
 /* Custom Gradients and Styles */
 .hero-gradient {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -34,4 +37,13 @@ strong {
 /* Ensure list items have proper text flow */
 li {
   line-height: 1.6;
+}
+
+/* Essential dark mode classes for theme toggle functionality */
+.dark .dark\:hidden {
+  display: none;
+}
+
+.dark .dark\:inline {
+  display: inline;
 }
