@@ -13,10 +13,24 @@ docker-compose up -d
 # Auto-reloads on file changes
 ```
 
+### Production Deployment to Cloudflare Workers
+```bash
+# 1. Build the Hugo site
+docker run --rm -v $(pwd)/site:/src -w /src ghcr.io/gohugoio/hugo:v0.148.2 --gc --minify
+
+# 2. Deploy to Cloudflare
+npx wrangler deploy
+
+# Live at: https://sofybasir.me
+```
+
 ### Local Development with Hugo CLI
 ```bash
 # If you have Hugo installed locally
 hugo server --buildDrafts --buildFuture
+
+# Build for production
+hugo --gc --minify
 
 # View site at http://localhost:1313
 ```
@@ -30,6 +44,8 @@ hugo server --buildDrafts --buildFuture
 │   ├── content/         # Markdown content files
 │   ├── archetypes/      # Content templates
 │   └── hugo.toml        # Site configuration
+├── src/                 # Cloudflare Worker code
+├── wrangler.jsonc       # Cloudflare Workers configuration
 ├── docker-compose.yml   # Docker development setup
 ├── README.md           # Documentation
 └── .gitignore          # Git ignore rules
@@ -56,19 +72,28 @@ hugo server --buildDrafts --buildFuture
 The portfolio highlights:
 - 25+ years of progressive industry experience
 - AWS Pioneer status since 2013
-- 3,500+ verified commits since 2018 in GyG demonstrating technical excellence
-- Technical leadership at Guzman y Gomez
-- International team management experience
-- Industry-first implementations and innovations
+- 3,500+ verified commits and 830,000+ lines of code since 2018 in GyG demonstrating technical excellence
+- Technical leadership at Guzman y Gomez (Primary AWS Infrastructure Architect)
+- International team management experience (FDA-regulated environments)
+- Industry-first implementations and innovations (Australian-first Oracle ATG cloud migration)
 
 ## 🚀 Deployment
 
-This site is designed to be deployed on any static hosting platform:
+**Current Setup:** Deployed on **Cloudflare Workers** with static assets at [https://sofybasir.me](https://sofybasir.me)
+
+**Alternative Platforms:** This Hugo site can also be deployed on:
 - Netlify
-- Vercel
+- Vercel  
 - GitHub Pages
-- CloudFlare Pages
 - AWS S3 + CloudFront
+
+**Prerequisites for Cloudflare Workers:**
+```bash
+# Authenticate once
+npx wrangler login
+
+# Then deploy using the commands above
+```
 
 ---
 

@@ -23,3 +23,6 @@ temp/
 # Local environment
 .env
 .env.local
+
+# Wrangler local files
+.wrangler/
