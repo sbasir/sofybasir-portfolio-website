@@ -1,6 +1,7 @@
 # Hugo
 site/public/
 site/resources/
+site/hugo_stats.json
 .hugo_build.lock
 
 # OS

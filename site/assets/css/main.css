@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+/* Tailwind CSS v4 Configuration */
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+}
+
+/* Custom Gradients and Styles */
+.hero-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper spacing and text flow */
+strong {
+  display: inline !important;
+  font-weight: 700;
+}
+
+/* Ensure list items have proper text flow */
+li {
+  line-height: 1.6;
+}

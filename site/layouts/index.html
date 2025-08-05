@@ -6,52 +6,13 @@
     <title>{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
     
-    <!-- Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- CSS processed with Hugo Tailwind CSS CLI -->
+    {{ with (templates.Defer (dict "key" "global")) }}
+      {{ partial "css.html" . }}
+    {{ end }}
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .scroll-smooth {
-            scroll-behavior: smooth;
-        }
-        /* Ensure proper spacing and text flow */
-        strong {
-            display: inline !important;
-            font-weight: 700;
-        }
-        /* Ensure list items have proper text flow */
-        li {
-            line-height: 1.6;
-        }
-    </style>
 </head>
 <body class="scroll-smooth bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     
