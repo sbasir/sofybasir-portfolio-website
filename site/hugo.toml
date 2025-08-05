@@ -11,6 +11,7 @@ title = 'Sofy Basir - Technical Lead & AWS Infrastructure Architect'
   phone = "+968 9901 6891"
   location = "Muscat, Oman"
   linkedin = "https://www.linkedin.com/in/sofybasir/"
+  github = "https://github.com/sbasir"
 
 [markup]
   [markup.goldmark]

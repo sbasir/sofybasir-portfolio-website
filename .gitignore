@@ -26,3 +26,5 @@ temp/
 
 # Wrangler local files
 .wrangler/
+
+private/
