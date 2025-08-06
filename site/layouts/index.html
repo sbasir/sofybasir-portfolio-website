@@ -156,7 +156,7 @@
                 
                 <!-- Current Role -->
                 <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                    <div class="p-6">
+                    <div class="p-6 cursor-pointer" onclick="toggleSection('gyg-role')">
                         <div class="flex justify-between items-start">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -174,10 +174,13 @@
                                     Primary AWS Infrastructure Architect
                                 </p>
                             </div>
+                            <div class="ml-4">
+                                <i id="gyg-role-icon" data-lucide="chevron-right" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="px-6 pb-6">
+                    <div id="gyg-role" class="px-6 pb-6 hidden">
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Key Achievements:</h4>
                             <ul class="space-y-2 mb-4">
@@ -210,7 +213,7 @@
 
                 <!-- Vodafone Role -->
                 <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                    <div class="p-6">
+                    <div class="p-6 cursor-pointer" onclick="toggleSection('vodafone-role')">
                         <div class="flex justify-between items-start">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -228,10 +231,13 @@
                                     AWS Pioneer & Cloud Transformation Leader
                                 </p>
                             </div>
+                            <div class="ml-4">
+                                <i id="vodafone-role-icon" data-lucide="chevron-right" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="px-6 pb-6">
+                    <div id="vodafone-role" class="px-6 pb-6 hidden">
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Revolutionary Achievements:</h4>
                             <ul class="space-y-2 mb-4">
@@ -263,7 +269,7 @@
 
                 <!-- ResMed Role -->
                 <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                    <div class="p-6">
+                    <div class="p-6 cursor-pointer" onclick="toggleSection('resmed-role')">
                         <div class="flex justify-between items-start">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -281,10 +287,13 @@
                                     FDA-Regulated Environment Leadership
                                 </p>
                             </div>
+                            <div class="ml-4">
+                                <i id="resmed-role-icon" data-lucide="chevron-right" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="px-6 pb-6">
+                    <div id="resmed-role" class="px-6 pb-6 hidden">
                         <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Leadership Excellence:</h4>
                             <ul class="space-y-2 mb-4">
@@ -536,6 +545,20 @@
             const theme = html.classList.contains('dark') ? 'dark' : 'light';
             localStorage.setItem('theme', theme);
         });
+
+        // Toggle expandable sections
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+                icon.style.transform = 'rotate(90deg)';
+            } else {
+                section.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
