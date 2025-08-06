@@ -4,7 +4,6 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const startTime = Date.now();
 
     let response;
     
@@ -23,19 +22,6 @@ export default {
       // Serve static assets (Hugo site)
       response = await env.ASSETS.fetch(request);
     }
-    
-    // Analytics data point
-    const analyticsData = {
-      responseTime: Date.now() - startTime,
-      method: request.method,
-      path: url.pathname,
-      userAgent: request.headers.get('User-Agent') || 'unknown',
-      country: request.cf?.country || 'unknown',
-      city: request.cf?.city || 'unknown',
-      referer: request.headers.get('Referer') || 'direct'
-    };
-
-    console.log(analyticsData);
 
     return response;
   },
